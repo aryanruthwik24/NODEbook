@@ -16,7 +16,7 @@ function Register(props) {
 
   function fregister(e){
     e.preventDefault();
-    fetch('http://localhost:8003/register', {
+    fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

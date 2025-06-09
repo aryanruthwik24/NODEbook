@@ -17,7 +17,7 @@ const[allnotes,setAllnotes]=useState([]);
 
 const createnotes=(e)=>{
   e.preventDefault();
-  fetch('http://localhost:8003/createTOdo', {
+  fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/createTOdo`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ const createnotes=(e)=>{
 
 const ShowAllNotes=(e)=>{
   
-  fetch('http://localhost:8003/getAllTodos', {
+  fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/getAllTodos`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
