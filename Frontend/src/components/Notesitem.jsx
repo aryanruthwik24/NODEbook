@@ -28,12 +28,15 @@ function Notesitem(props) {
           .then((res) =>{ return res.json()
           })
           .then((data) => {
-            props.handleloading(false);
+            
             if(data.message==="success"){
            props.ShowAllNotes();
+           props.handleloading(false);
             }
-          else
+          else{
           alert(data.message);
+           props.handleloading(false);
+          }
           
           })
           .catch(err => console.log(err))
@@ -57,15 +60,17 @@ function Notesitem(props) {
           .then((res) =>{ return res.json()
           })
           .then((data) => {
-            props.handleloading(false);
+            
             if(data.message==="success"){
                props.ShowAllNotes();
-                
+                props.handleloading(false);
 
            
             }
-          else
+          else{
           alert(data.message);
+          props.handleloading(false);
+          }
           
           })
           .catch(err => console.log(err))
