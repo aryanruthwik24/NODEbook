@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
+import logo from './../../public/notes.png';
 
 function Navbar() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const logout=()=>{
     
      <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
   <div className="container-fluid">
-  <i className="fa-solid fa-bars fa-xl mx-2" style={{ color: '#ffffff'}}></i>
+    <img src={logo} alt="Logo" style={{height:'45px'}}/>;
     <a className="navbar-brand" href="#">NODEbook</a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
@@ -29,9 +30,7 @@ const logout=()=>{
         <li className="nav-item">
           <a className="nav-link active" aria-current="page" href="#">Home</a>
         </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Link</a>
-        </li>
+        
         <li className="nav-item dropdown">
           
         

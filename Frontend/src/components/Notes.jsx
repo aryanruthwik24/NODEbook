@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import Notesitem from './Notesitem';
+import Loader from './Loader';
 
 
 function Notes(props) {
@@ -8,15 +9,19 @@ function Notes(props) {
 const [notesTag,setnotesTag]=useState("");
 const [notesTitle,setnotesTitle]=useState("");
 const [notesDescription,setnotesDescription]=useState("");
+const [loading, setLoading] = useState(false);
 //const[email2,setemail2]=useState("aryanruthwik24@gmail.com");
 //setemail2(props.email);
 const[allnotes,setAllnotes]=useState([]);
 
-
+const handleloading=(param)=>{
+setLoading(param);
+}
 
 
 const createnotes=(e)=>{
   e.preventDefault();
+  setLoading(true);
   fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/createTOdo`, {
     method: 'POST',
     headers: {
@@ -28,7 +33,7 @@ const createnotes=(e)=>{
     .then((res) =>{ return res.json()
     })
     .then((data) => {
-      
+      setLoading(false);
       if(data.message==="notes created successfully"){
         const taginput = document.getElementById('exampleFormControlInput1');
         taginput.value="";
@@ -36,7 +41,7 @@ const createnotes=(e)=>{
         titleinput.value="";
         const descriptioninput = document.getElementById('exampleFormControlTextarea1');
         descriptioninput.value="";
-       
+       ShowAllNotes();
         
       
       }
@@ -80,13 +85,14 @@ const ShowAllNotes=(e)=>{
 }
 useEffect(()=>{
   ShowAllNotes();
-},[allnotes])
+},[])
 
 
 
 
   return (
    <>
+  
     {localStorage.getItem('accesstoken') && <div>
     
      <div style={{margin:'75px 300px 0px 300px'}} >
@@ -107,14 +113,14 @@ useEffect(()=>{
 
     </div>
 
-
+{loading && <Loader/>}
     
 
 
     <div style={{ display: 'flex' ,flexWrap: 'wrap',margin:'50px 25px 25px 125px'}}>
 {allnotes.map((element)=>{
             return   <div className='col-md-6' key={element._id} >
-            <Notesitem title={element.title}  description={element.description } tag={element.tag} id={element._id} />
+            <Notesitem title={element.title} ShowAllNotes={ShowAllNotes} handleloading={handleloading}description={element.description } tag={element.tag} id={element._id} />
            
             </div>
 

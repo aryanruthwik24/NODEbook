@@ -16,7 +16,8 @@ function Notesitem(props) {
 
     const delnote=(e,id)=>{
         e.preventDefault();
-        fetch('http://localhost:8003/deletenote', {
+        props.handleloading(true);
+        fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/deletenote`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json'
@@ -27,9 +28,9 @@ function Notesitem(props) {
           .then((res) =>{ return res.json()
           })
           .then((data) => {
-            
+            props.handleloading(false);
             if(data.message==="success"){
-           
+           props.ShowAllNotes();
             }
           else
           alert(data.message);
@@ -44,7 +45,8 @@ function Notesitem(props) {
         console.log(utag);
         console.log(utitle);
         console.log(udescription);
-        fetch('http://localhost:8003/updatenotes', {
+        props.handleloading(true);
+        fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/updatenotes`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
@@ -55,9 +57,9 @@ function Notesitem(props) {
           .then((res) =>{ return res.json()
           })
           .then((data) => {
-            
+            props.handleloading(false);
             if(data.message==="success"){
-               
+               props.ShowAllNotes();
                 
 
            
