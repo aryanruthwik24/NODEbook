@@ -4,7 +4,7 @@ import './Register.css'
 import {Link} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-function Register(props) {
+function Register({handleloading}) {
   const navigate = useNavigate();
   const [registeremail, setregisterEmail] = useState("");
   const [registerpassword, setregisterPassword] = useState(""); 
@@ -16,6 +16,7 @@ function Register(props) {
 
   function fregister(e){
     e.preventDefault();
+    handleloading(true);
     fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/register`, {
       method: 'POST',
       headers: {
@@ -27,13 +28,13 @@ function Register(props) {
       .then(data => {
         if(data.message==="User registered successfully"){
            
-        
+        handleloading(false);
         navigate('/');
        
         }
       else{
           alert(data.message)
-         
+         handleloading(false);
       }
       })
       .catch(err => console.log(err))

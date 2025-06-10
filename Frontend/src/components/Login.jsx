@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import './Login.css'
 import { useNavigate } from "react-router-dom";
 
-function Login (props) {
+function Login ({handleloading}) {
   const navigate = useNavigate();
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -12,6 +12,7 @@ function Login (props) {
 
   const fsignup=(e)=>{
    e.preventDefault();
+   handleloading(true);
     fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/login`, {
       method: 'POST',
       headers: {
@@ -25,14 +26,17 @@ function Login (props) {
       .then((data) => {
         
         if(data.message==="User logged in Successfully"){
+          handleloading(false);
           localStorage.setItem('useremail',data.useremail);
           localStorage.setItem('accesstoken', data.accesstoken)
         navigate('/home');
        
         
         }
-      else
+      else{
       alert(data.message);
+      handleloading(false);
+      }
        // console.log(data.accesstoken)
         //localStorage.setItem('accesstoken', data.accesstoken)
       })
@@ -55,7 +59,7 @@ function Login (props) {
                                 <input type="password" id="password" onChange={(e)=>{setLoginPassword(e.target.value)}} name="password" placeholder="Enter your password" required/>
                             </div>
                             <button  className="login-button" type="submit" onClick={fsignup}>Log in</button>
-                            <h6>New to iNoteBook <Link to="/register" >sign Up</Link></h6>
+                            <h6>New to NODEbook <Link to="/register" >sign Up</Link></h6>
                     </form>
             </div>
             

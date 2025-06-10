@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import Notesitem from './Notesitem';
-import Loader from './Loader';
 
 
-function Notes(props) {
+
+function Notes({handleloading}) {
   const navigate = useNavigate();
 const [notesTag,setnotesTag]=useState("");
 const [notesTitle,setnotesTitle]=useState("");
 const [notesDescription,setnotesDescription]=useState("");
-const [loading, setLoading] = useState(false);
+
 //const[email2,setemail2]=useState("aryanruthwik24@gmail.com");
 //setemail2(props.email);
 const[allnotes,setAllnotes]=useState([]);
 
-const handleloading=(param)=>{
-setLoading(param);
-}
+
 
 
 const createnotes=(e)=>{
   e.preventDefault();
-  setLoading(true);
+  handleloading(true);
   fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/createTOdo`, {
     method: 'POST',
     headers: {
@@ -33,7 +31,7 @@ const createnotes=(e)=>{
     .then((res) =>{ return res.json()
     })
     .then((data) => {
-      setLoading(false);
+      handleloading(false);
       if(data.message==="notes created successfully"){
         const taginput = document.getElementById('exampleFormControlInput1');
         taginput.value="";
@@ -41,6 +39,9 @@ const createnotes=(e)=>{
         titleinput.value="";
         const descriptioninput = document.getElementById('exampleFormControlTextarea1');
         descriptioninput.value="";
+        setnotesDescription('');
+        setnotesTag('');
+        setnotesTitle('');
        ShowAllNotes();
         
       
@@ -113,7 +114,7 @@ useEffect(()=>{
 
     </div>
 
-{loading && <Loader/>}
+
     
 
 
