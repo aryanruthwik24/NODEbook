@@ -46,7 +46,7 @@ function Register({handleloading}) {
     <form>
       <div  className="input-group">
         <label htmlFor="firstName">First Name<span>*</span>:</label>
-        <input type="text" id="firstName" onChange={(e)=>{setName(e.target.value)}} name="firstName" placeholder="Enter your first name" required/>
+        <input type="text" id="firstName" onChange={(e)=>{setName(e.target.value)}} autoFocus name="firstName" placeholder="Enter your first name" required/>
       </div>
       <div  className="input-group">
         <label htmlFor="lastName">Last Name:</label>

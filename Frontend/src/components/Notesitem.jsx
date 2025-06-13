@@ -12,7 +12,7 @@ function Notesitem(props) {
     const [utag,setUtag]=useState("");
     const [utitle,setUtitle]=useState("");
     const [udescription,setUdescription]=useState("");
-
+    const [updatedNotes,setUpdatedNotes]=useState({});
 
     const delnote=(e,id)=>{
         e.preventDefault();
@@ -45,9 +45,7 @@ function Notesitem(props) {
     const updatenotes=(e,id)=>{
         e.preventDefault();
         
-        console.log(utag);
-        console.log(utitle);
-        console.log(udescription);
+       
         props.handleloading(true);
         fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/updatenotes`, {
           method: 'PUT',
@@ -106,7 +104,9 @@ function Notesitem(props) {
       }
      
     
-
+ console.log(utag);
+        console.log(utitle);
+        console.log(udescription);
 
   return (
     <div>

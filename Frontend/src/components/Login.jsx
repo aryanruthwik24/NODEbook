@@ -2,6 +2,7 @@ import React, { useEffect,useState } from 'react'
 import {Link} from "react-router-dom";
 import './Login.css'
 import { useNavigate } from "react-router-dom";
+import logo from './../../public/notes.png'
 
 function Login ({handleloading}) {
   const navigate = useNavigate();
@@ -46,13 +47,14 @@ function Login ({handleloading}) {
 
     return (
       <div  className="login-page">
-      
+                    <div className='login-page-img'><img src={logo} alt="Logo" style={{height:'45px'}}/></div>
+
             <div  className="login-container">
                     <h2>Login</h2>
                     <form>
                             <div  className="input-group">
                                 <label htmlFor="email">Email:</label>
-                                <input type="email" id="email" onChange={(e)=>{setLoginEmail(e.target.value)}} name="email" placeholder="Enter your email" required/>
+                                <input type="email" id="email" onChange={(e)=>{setLoginEmail(e.target.value)}} name="email" autoFocus placeholder="Enter your email" required/>
                             </div>
                             <div  className="input-group">
                                 <label htmlFor="password">Password:</label>

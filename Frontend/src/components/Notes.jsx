@@ -56,7 +56,7 @@ const createnotes=(e)=>{
 }
 
 const ShowAllNotes=(e)=>{
-  
+  handleloading(true);
   fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/getAllTodos`, {
     method: 'POST',
     headers: {
@@ -68,7 +68,7 @@ const ShowAllNotes=(e)=>{
     .then((res) =>{ return res.json()
     })
     .then((data) => {
-      
+      handleloading(false);
       if(data.message==="success"){
        // console.log(data.notesF);
         setAllnotes(data.notesF);

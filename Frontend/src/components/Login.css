@@ -1,29 +1,24 @@
-
-.login-page body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f0f0f0;
-}
+@media only screen and (min-width: 601px) {
   .login-page{
     display: flex;
     justify-content: center;
-    margin-top: 155px;
+    align-items: center;
+    height: 100vh;
   }
   .login-container {
     background-color: #78909c;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    height:400px;
-    width: 400px;
+    height:50vh;
+    width: 50vh;
     text-align: center;
   }
+  .login-page-img{
+    display: none;
+  }
    
-  .login-page .input-group {
+   .login-page .input-group {
     margin-bottom: 15px;
   }
   .login-page .input-group label {
@@ -35,7 +30,7 @@
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 8px!important;
   }
   .login-button {
     background-color: #26c6da;
@@ -44,7 +39,58 @@
     padding: 10px 20px;
     border-radius: 6px;
     cursor: pointer;
-    margin-top: 30px ;
-    margin-bottom: 20px;
+    margin-top: 20px ;
+    margin-bottom: 10px;
+  }
+}
+   @media only screen and (max-width: 600px) {
+   .login-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+  }
+  .login-container {
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20vh;
+  }
+   .login-page-img{
+    margin-bottom: 10vh;
+    background-color:  #26c6da;
+    height: 8vh;
+    width: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4vh;
+   }
+   
+   .login-page .input-group {
+    margin-bottom: 15px;
+  }
+  .login-page .input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  .login-page .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px!important;
+  }
+  .login-button {
+    background-color: #26c6da;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 20px ;
+    margin-bottom: 10px;
   }
   
+}
