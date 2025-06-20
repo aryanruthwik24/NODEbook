@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
 import{ useEffect, useState } from 'react'
+import './NotesItem.css'
 
 
 
@@ -144,7 +145,7 @@ function Notesitem(props) {
 
 
 
-      <div className="card text-bg-dark mb-3 mx-2" style={{ height: '20rem' }}>
+      <div id='cardContainer'className="card text-bg-dark mb-3 mx-2" >
   <div className="card-header">
   <div className="d-flex align-items-center justify-content-between">
   <h4>#{props.tag}</h4>

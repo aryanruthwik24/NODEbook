@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import Notesitem from './Notesitem';
-
+import './Notes.css'
 
 
 function Notes({handleloading}) {
@@ -96,7 +96,7 @@ useEffect(()=>{
   
     {localStorage.getItem('accesstoken') && <div>
     
-     <div style={{margin:'75px 300px 0px 300px'}} >
+     <div  className="inputContainer" >
      <div className="mb-3">
   <label htmlFor="exampleFormControlInput1" className="form-label">Tag</label>
   <input type="text" onChange={(e)=>{setnotesTag(e.target.value)}} className="form-control" id="exampleFormControlInput1" placeholder="Tag"/>
@@ -118,7 +118,7 @@ useEffect(()=>{
     
 
 
-    <div style={{ display: 'flex' ,flexWrap: 'wrap',margin:'50px 25px 25px 125px'}}>
+    <div className='NotesItemContainer'>
 {allnotes.map((element)=>{
             return   <div className='col-md-6' key={element._id} >
             <Notesitem title={element.title} ShowAllNotes={ShowAllNotes} handleloading={handleloading}description={element.description } tag={element.tag} id={element._id} />
