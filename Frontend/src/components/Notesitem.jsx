@@ -110,7 +110,7 @@ function Notesitem(props) {
         console.log(udescription);
 
   return (
-    <div>
+    <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
 
 <div className="modal fade" id="myModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">

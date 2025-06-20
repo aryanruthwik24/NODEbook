@@ -38,8 +38,6 @@ function Login ({handleloading}) {
       alert(data.message);
       handleloading(false);
       }
-       // console.log(data.accesstoken)
-        //localStorage.setItem('accesstoken', data.accesstoken)
       })
       .catch(err => console.log(err))
 

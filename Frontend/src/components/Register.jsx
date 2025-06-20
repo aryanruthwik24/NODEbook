@@ -9,14 +9,48 @@ function Register({handleloading}) {
   const [registeremail, setregisterEmail] = useState("");
   const [registerpassword, setregisterPassword] = useState(""); 
   const [registername, setName] = useState("");
- // const [loginPassword, setLoginPassword] = useState("");
+
+function validateCredentials(email, password) {
+  const result = {
+    isValidEmail: false,
+    isValidPassword: false,
+    message: ""
+  };
+
+  // Email format validation using regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  result.isValidEmail = emailRegex.test(email);
+
+  // Password validation: min 8 characters, 1 uppercase, 1 lowercase, 1 number
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+  result.isValidPassword = passwordRegex.test(password);
+
+  // Set message based on validation result
+  if (!result.isValidEmail && !result.isValidPassword) {
+    result.message = "Invalid email and password format.";
+  } else if (!result.isValidEmail) {
+    result.message = "Invalid email format.";
+  } else if (!result.isValidPassword) {
+    result.message = "Password must be at least 8 characters long and include uppercase, lowercase, and a number.";
+  } else {
+    result.message = "Email and password format are valid.";
+  }
+
+  return result;
+}
 
 
 
 
   function fregister(e){
     e.preventDefault();
-    handleloading(true);
+    
+    let result =validateCredentials(registeremail,registerpassword);
+    if(result.message!=='Email and password format are valid.'){
+      alert(result.message);
+    }
+    else{
+      handleloading(true);
     fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/register`, {
       method: 'POST',
       headers: {
@@ -28,8 +62,33 @@ function Register({handleloading}) {
       .then(data => {
         if(data.message==="User registered successfully"){
            
-        handleloading(false);
-        navigate('/');
+      
+        fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({'email': registeremail,'password':registerpassword})
+    })
+    
+      .then((res) =>{ return res.json()
+      })
+      .then((data) => {
+        
+        if(data.message==="User logged in Successfully"){
+          handleloading(false);
+          localStorage.setItem('useremail',data.useremail);
+          localStorage.setItem('accesstoken', data.accesstoken)
+        navigate('/home');
+       
+        
+        }
+      else{
+      alert(data.message);
+      handleloading(false);
+      }
+      })
+      .catch(err => console.log(err))
        
         }
       else{
@@ -38,7 +97,8 @@ function Register({handleloading}) {
       }
       })
       .catch(err => console.log(err))
-  
+
+    }
   }
     return (
       <div  className="register-page">
