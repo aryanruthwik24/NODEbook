@@ -1,6 +1,6 @@
  @media only screen and (max-width: 600px) {
  #cardContainer{
-        height: 20vh;
+        height: auto;
         width: 90vw;
     }
 }

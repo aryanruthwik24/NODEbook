@@ -24,13 +24,14 @@ function App() {
 const handleloading=(param)=>{
 setLoading(param);
 }
+const isAuthenticated=localStorage.getItem('accesstoken');
   return (
     <Router>
     <Navbar/>
     <Alert alert={alert}/>
     {loading && <Loader/>}
       <Routes>
-      <Route path='/home' element={<Notes handleloading={handleloading} />} />
+      <Route path='/home' element={isAuthenticated ? <Notes handleloading={handleloading} /> :<Login handleloading={handleloading} />} />
       <Route path='/' element={<Login handleloading={handleloading} />} />
       <Route path='/register' element={<Register handleloading={handleloading} />} />
       </Routes>

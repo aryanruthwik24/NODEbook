@@ -44,13 +44,12 @@ function validateCredentials(email, password) {
 
   function fregister(e){
     e.preventDefault();
-    
     let result =validateCredentials(registeremail,registerpassword);
     if(result.message!=='Email and password format are valid.'){
       alert(result.message);
     }
     else{
-      handleloading(true);
+       handleloading(true);
     fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/register`, {
       method: 'POST',
       headers: {
