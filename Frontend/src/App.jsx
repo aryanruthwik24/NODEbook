@@ -28,7 +28,7 @@ const isAuthenticated=localStorage.getItem('accesstoken');
   return (
     <Router>
     <Navbar/>
-    <lert alert={alert}/>
+    <Alert alert={alert}/>
     {loading && <Loader/>}
       <Routes>
       <Route path='/home' element={isAuthenticated ? <Notes handleloading={handleloading} /> :<Login handleloading={handleloading} />} />

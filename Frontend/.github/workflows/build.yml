@@ -1,4 +1,4 @@
-name: React App Build Pipeline
+name: Full Stack CI - NODEbook
 
 on:
   push:
@@ -11,22 +11,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18  # Or your project's Node version
+          node-version: 18
 
-      - name: Install Dependencies
+      # Backend setup
+      - name: Install Backend Dependencies
+        working-directory: backend
         run: npm install
 
-      - name: Build the Project
+      # Optional: Run Backend Tests (if you have any)
+      - name: Run Backend Tests
+        working-directory: backend
+        run: npm test
+        continue-on-error: true  # Remove this if tests must pass
+
+      # Frontend setup
+      - name: Install Frontend Dependencies
+        working-directory: frontend
+        run: npm install
+
+      - name: Build Frontend
+        working-directory: frontend
         run: npm run build
 
-      - name: Upload Production Build (optional)
+      # Optional: Upload the frontend build as an artifact
+      - name: Upload Frontend Build
         uses: actions/upload-artifact@v4
         with:
-          name: react-build
-          path: build
+          name: frontend-build
+          path: frontend/build
