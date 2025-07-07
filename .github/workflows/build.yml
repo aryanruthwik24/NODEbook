@@ -1,4 +1,4 @@
-name: Full Stack CI - NODEbook
+name: Full Stack Build (Vite + Node)
 
 on:
   push:
@@ -11,37 +11,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      # Backend setup
+      # ✅ Backend setup
       - name: Install Backend Dependencies
         working-directory: backend
         run: npm install
 
-      # Optional: Run Backend Tests (if you have any)
+      # 🧪 Optional: Backend Tests
       - name: Run Backend Tests
         working-directory: backend
         run: npm test
-        continue-on-error: true  # Remove this if tests must pass
+        continue-on-error: true  # Remove this line if tests must pass
 
-      # Frontend setup
+      # ✅ Frontend setup (Vite)
       - name: Install Frontend Dependencies
         working-directory: frontend
         run: npm install
 
-      - name: Build Frontend
+      - name: Build Vite Frontend
         working-directory: frontend
         run: npm run build
 
-      # Optional: Upload the frontend build as an artifact
-      - name: Upload Frontend Build
+      # 📦 Optional: Save the Vite build folder as an artifact
+      - name: Upload Frontend Build Output
         uses: actions/upload-artifact@v4
         with:
-          name: frontend-build
-          path: frontend/build
+          name: vite-build
+          path: frontend/dist
