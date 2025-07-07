@@ -21,12 +21,12 @@ jobs:
 
       # ✅ Backend setup
       - name: Install Backend Dependencies
-        working-directory: backend
+        working-directory: Backend
         run: npm install
 
       # 🧪 Optional: Backend Tests
       - name: Run Backend Tests
-        working-directory: backend
+        working-directory: Backend
         run: npm test
         continue-on-error: true  # Remove this line if tests must pass
 
