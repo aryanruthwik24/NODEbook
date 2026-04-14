@@ -6,14 +6,16 @@
     align-items: center;
     height: 100vh;
   }
-  
+  .register-page-img-title{
+    display: none;
+  }
   .register-container {
     background-color: #78909c;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 50vh;
-    height: 80vh;
+    height: auto;
     text-align: center;
   }
   .register-container h2 {
@@ -51,11 +53,36 @@
    @media only screen and (max-width: 600px) {
     .register-page{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    gap: 5vh;
   }
-  
+  .register-page-img{
+    /* margin-bottom: 10vh; */
+    background-color:  #26c6da;
+    height: 8vh;
+    width: 8vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4vh;
+    margin-right: 10px;;
+   }
+   
+   .register-page-img-title{
+display: flex;
+/* flex-direction: column; */
+justify-content: center;
+align-items: center;
+   }
+   .register-page-title{
+    font-size: xx-large;
+    font-weight: 500;
+    font-style:normal;
+   }
   .register-container {
     padding: 20px;
     border-radius: 8px;

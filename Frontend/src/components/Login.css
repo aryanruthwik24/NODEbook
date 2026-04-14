@@ -14,7 +14,7 @@
     width: 50vh;
     text-align: center;
   }
-  .login-page-img{
+  .login-page-img-title{
     display: none;
   }
    
@@ -50,6 +50,7 @@
     align-items: center;
     height: 100vh;
     flex-direction: column;
+    gap: 10vh;
   }
   .login-container {
     padding: 20px;
@@ -58,16 +59,30 @@
     margin-bottom: 20vh;
   }
    .login-page-img{
-    margin-bottom: 10vh;
+    /* margin-bottom: 10vh; */
     background-color:  #26c6da;
     height: 8vh;
     width: 8vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 4vh;
+    margin-right: 10px;;
    }
    
+   .login-page-img-title{
+display: flex;
+/* flex-direction: column; */
+justify-content: center;
+align-items: center;
+   }
+   .login-page-title{
+    font-size: xx-large;
+    font-weight: 500;
+    font-style:normal;
+   }
+
    .login-page .input-group {
     margin-bottom: 15px;
   }

@@ -45,7 +45,7 @@ function Login ({handleloading}) {
 
     return (
       <div  className="login-page">
-                    <div className='login-page-img'><img src={logo} alt="Logo" style={{height:'45px'}}/></div>
+                    <div className='login-page-img-title'><div className='login-page-img'><img src={logo} alt="Logo" style={{height:'45px'}}/></div><div className='login-page-title'>NODEbook</div></div>
 
             <div  className="login-container">
                     <h2>Login</h2>

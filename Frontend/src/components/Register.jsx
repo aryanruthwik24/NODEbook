@@ -3,6 +3,8 @@ import { useEffect,useState } from 'react'
 import './Register.css'
 import {Link} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import logo from './../../public/notes.png'
+
 
 function Register({handleloading}) {
   const navigate = useNavigate();
@@ -101,6 +103,8 @@ function validateCredentials(email, password) {
   }
     return (
       <div  className="register-page">
+                            <div className='register-page-img-title'><div className='register-page-img'><img src={logo} alt="Logo" style={{height:'45px'}}/></div><div className='register-page-title'>NODEbook</div></div>
+        
          <div  className="register-container">
     <form>
       <div  className="input-group">
@@ -111,17 +115,17 @@ function validateCredentials(email, password) {
         <label htmlFor="lastName">Last Name:</label>
         <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required/>
       </div>
-      <div  className="input-group">
+      {/* <div  className="input-group">
         <label htmlFor="age">Age:</label>
         <input type="text" id="age" name="age" placeholder="Enter your age" required/>
-      </div>
+      </div> */}
       <div  className="input-group">
         <label htmlFor="email">Email<span>*</span>:</label>
         <input type="email" id="email" onChange={(e)=>{setregisterEmail(e.target.value)}} name="email" placeholder="Enter your email" required/>
       </div>
       <div  className="input-group">
         <label htmlFor="password">Password<span>*</span>:</label>
-        <input type="password" id="password" onChange={(e)=>{setregisterPassword(e.target.value)}} name="password" placeholder="Enter your password" required/>
+        <input type="password" id="password" onChange={(e)=>{setregisterPassword(e.target.value)}}  name="password" placeholder="Enter your password" required/>
       </div>
       <button  className="register-button" type="submit" onClick={fregister}>Register</button>
     </form>
